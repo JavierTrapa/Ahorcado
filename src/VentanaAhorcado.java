@@ -33,7 +33,6 @@ public class VentanaAhorcado extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        BotonA = new javax.swing.JButton();
         BotonB = new javax.swing.JButton();
         BotonC = new javax.swing.JButton();
         BotonF = new javax.swing.JButton();
@@ -82,14 +81,6 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 113, -1, -1));
-
-        BotonA.setText("A");
-        BotonA.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                BotonAMousePressed(evt);
-            }
-        });
-        getContentPane().add(BotonA, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, 50, 50));
 
         BotonB.setText("B");
         BotonB.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -330,10 +321,6 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonAMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonAMousePressed
-        chequeaBoton((JButton)evt.getSource());
-    }//GEN-LAST:event_BotonAMousePressed
-
     private void BotonBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBMousePressed
         chequeaBoton((JButton)evt.getSource());
     }//GEN-LAST:event_BotonBMousePressed
@@ -493,7 +480,6 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonA;
     private javax.swing.JButton BotonA1;
     private javax.swing.JButton BotonB;
     private javax.swing.JButton BotonC;
