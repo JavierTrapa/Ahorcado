@@ -60,6 +60,7 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         jButton39 = new javax.swing.JButton();
         jButton40 = new javax.swing.JButton();
         jButton41 = new javax.swing.JButton();
+        BotonA1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,7 +89,7 @@ public class VentanaAhorcado extends javax.swing.JFrame {
                 BotonAMousePressed(evt);
             }
         });
-        getContentPane().add(BotonA, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 331, 50, 50));
+        getContentPane().add(BotonA, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, 50, 50));
 
         BotonB.setText("B");
         BotonB.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -318,6 +319,14 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         });
         getContentPane().add(jButton41, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 443, 50, 50));
 
+        BotonA1.setText("A");
+        BotonA1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BotonA1MousePressed(evt);
+            }
+        });
+        getContentPane().add(BotonA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 331, 50, 50));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -445,6 +454,10 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         chequeaBoton((JButton)evt.getSource());
     }//GEN-LAST:event_jButton37ActionPerformed
 
+    private void BotonA1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonA1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonA1MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -481,6 +494,7 @@ public class VentanaAhorcado extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonA;
+    private javax.swing.JButton BotonA1;
     private javax.swing.JButton BotonB;
     private javax.swing.JButton BotonC;
     private javax.swing.JButton BotonD;
