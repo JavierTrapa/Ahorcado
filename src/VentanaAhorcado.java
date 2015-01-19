@@ -1,4 +1,8 @@
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
 /*
@@ -20,6 +24,49 @@ public class VentanaAhorcado extends javax.swing.JFrame {
     
     //contador de fallos
     int numeroFallos=0;
+    
+    @Override
+    public void paint (Graphics g){
+        super.paintComponents(g);
+        g=jPanel1.getGraphics();
+        
+        //cargamos una imagen
+        
+        Image miImagen=null;
+        
+        try{
+            switch(numeroFallos){
+                case 0:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_0.png"));
+                    break;
+                case 1:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_1.png"));
+                    break;
+                case 2:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_2.png"));
+                    break;
+                case 3:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_3.png"));
+                    break;
+                case 4:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_4.png"));
+                    break;
+                case 5:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_5.png"));
+                    break;
+                case -100:
+                    miImagen=ImageIO.read(getClass().getResource("/acertasteTodas.png"));
+                    break;
+                default:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_fin.png"));
+                    break;
+            }
+            //miImagen=ImageIO.read(getClass().getResource("/ahorcado_0.png"));
+        }catch(IOException ex){
+            
+        }
+        g.drawImage(miImagen, 0, 0, jPanel1.getWidth(), jPanel1.getHeight(), null);
+    }
     
     public VentanaAhorcado() {
         initComponents();
@@ -45,6 +92,12 @@ public class VentanaAhorcado extends javax.swing.JFrame {
             numeroFallos++;
             jLabel2.setText(String.valueOf(numeroFallos));
         }
+        
+        //para ver si todas las letras estan descubiertas
+        if(!palabraConGuiones.contains("_")){
+            numeroFallos=-100;
+        }
+        repaint();
     }
     
     //recibe el boton que ha sido pulsado
@@ -287,6 +340,11 @@ public class VentanaAhorcado extends javax.swing.JFrame {
                 jButton37MousePressed(evt);
             }
         });
+        jButton37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton37ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton37, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 499, 50, 50));
 
         jButton38.setText("Z");
@@ -442,6 +500,10 @@ public class VentanaAhorcado extends javax.swing.JFrame {
     private void BotonA1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonA1MousePressed
         chequeaBoton((JButton)evt.getSource());
     }//GEN-LAST:event_BotonA1MousePressed
+
+    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
+        chequeaBoton((JButton)evt.getSource());
+    }//GEN-LAST:event_jButton37ActionPerformed
 
     /**
      * @param args the command line arguments
