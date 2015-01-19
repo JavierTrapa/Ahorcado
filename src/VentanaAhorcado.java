@@ -1,4 +1,8 @@
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
 /*
@@ -21,6 +25,49 @@ public class VentanaAhorcado extends javax.swing.JFrame {
     //contador de fallos
     int numeroFallos=0;
     
+    @Override
+    public void paint (Graphics g){
+        super.paintComponents(g);
+        g=jPanel1.getGraphics();
+        
+        //cargamos una imagen
+        
+        Image miImagen=null;
+        
+        try{
+            switch(numeroFallos){
+                case 0:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_0.png"));
+                    break;
+                case 1:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_1.png"));
+                    break;
+                case 2:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_2.png"));
+                    break;
+                case 3:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_3.png"));
+                    break;
+                case 4:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_4.png"));
+                    break;
+                case 5:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_5.png"));
+                    break;
+                case -100:
+                    miImagen=ImageIO.read(getClass().getResource("/acertasteTodo.png"));
+                    break;
+                default:
+                    miImagen=ImageIO.read(getClass().getResource("/ahorcado_fin.png"));
+                    break;
+            }
+            //miImagen=ImageIO.read(getClass().getResource("/ahorcado_0.png"));
+        }catch(IOException ex){
+            
+        }
+        g.drawImage(miImagen, 0, 0, jPanel1.getWidth(), jPanel1.getHeight(), null);
+    }
+    
     public VentanaAhorcado() {
         initComponents();
     }
@@ -32,11 +79,25 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         //letra=letra.toUpperCase();  pasa las letras a mayusculas ya que la comparativa de contains es estricta
         if(palabraOculta.contains(letra)){//comprueba si la letra esta en la palabra oculta
             //desocultar la letra de la palabra oculta
+            for (int i=0;i<palabraOculta.length();i++){
+                if(palabraOculta.charAt(i)==letra.charAt(0)){
+                    //si llegamos aqui es porque la letra esta en la palabra oculta
+                    //palabraConGuiones[2*i]=letra;
+                    palabraConGuiones=palabraConGuiones.substring(0,2*i)+letra+palabraConGuiones.substring(2*i+1);
+                }
+            }
+            jLabel1.setText(palabraConGuiones);
             //quitar el guion bajo
         }else{//pinta el ahorcado
             numeroFallos++;
             jLabel2.setText(String.valueOf(numeroFallos));
         }
+        
+        //para ver si todas las letras estan descubiertas
+        if(!palabraConGuiones.contains("_")){
+            numeroFallos= -100;
+        }
+        repaint();
     }
     
     //recibe el boton que ha sido pulsado
@@ -117,11 +178,6 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         BotonC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BotonCMousePressed(evt);
-            }
-        });
-        BotonC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonCActionPerformed(evt);
             }
         });
         getContentPane().add(BotonC, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 331, 50, 50));
@@ -212,22 +268,12 @@ public class VentanaAhorcado extends javax.swing.JFrame {
                 BotonNMousePressed(evt);
             }
         });
-        BotonN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonNActionPerformed(evt);
-            }
-        });
         getContentPane().add(BotonN, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 387, 50, 50));
 
         jButton29.setText("Ñ");
         jButton29.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton29MousePressed(evt);
-            }
-        });
-        jButton29.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton29ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton29, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 443, 50, 50));
@@ -451,25 +497,13 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         chequeaBoton((JButton)evt.getSource());
     }//GEN-LAST:event_jButton41MousePressed
 
-    private void BotonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCActionPerformed
+    private void BotonA1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonA1MousePressed
         chequeaBoton((JButton)evt.getSource());
-    }//GEN-LAST:event_BotonCActionPerformed
-
-    private void BotonNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonNActionPerformed
-        chequeaBoton((JButton)evt.getSource());
-    }//GEN-LAST:event_BotonNActionPerformed
-
-    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
-    }//GEN-LAST:event_jButton29ActionPerformed
+    }//GEN-LAST:event_BotonA1MousePressed
 
     private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
         chequeaBoton((JButton)evt.getSource());
     }//GEN-LAST:event_jButton37ActionPerformed
-
-    private void BotonA1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonA1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotonA1MousePressed
 
     /**
      * @param args the command line arguments
