@@ -32,6 +32,14 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         //letra=letra.toUpperCase();  pasa las letras a mayusculas ya que la comparativa de contains es estricta
         if(palabraOculta.contains(letra)){//comprueba si la letra esta en la palabra oculta
             //desocultar la letra de la palabra oculta
+            for (int i=0;i<palabraOculta.length();i++){
+                if(palabraOculta.charAt(i)==letra.charAt(0)){
+                    //si llegamos aqui es porque la letra esta en la palabra oculta
+                    //palabraConGuiones[2*i]=letra;
+                    palabraConGuiones=palabraConGuiones.substring(0,2*i)+letra+palabraConGuiones.substring(2*i+1);
+                }
+            }
+            jLabel1.setText(palabraConGuiones);
             //quitar el guion bajo
         }else{//pinta el ahorcado
             numeroFallos++;
@@ -117,11 +125,6 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         BotonC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BotonCMousePressed(evt);
-            }
-        });
-        BotonC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonCActionPerformed(evt);
             }
         });
         getContentPane().add(BotonC, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 331, 50, 50));
@@ -212,22 +215,12 @@ public class VentanaAhorcado extends javax.swing.JFrame {
                 BotonNMousePressed(evt);
             }
         });
-        BotonN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonNActionPerformed(evt);
-            }
-        });
         getContentPane().add(BotonN, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 387, 50, 50));
 
         jButton29.setText("Ñ");
         jButton29.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton29MousePressed(evt);
-            }
-        });
-        jButton29.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton29ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton29, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 443, 50, 50));
@@ -292,11 +285,6 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         jButton37.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton37MousePressed(evt);
-            }
-        });
-        jButton37.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton37ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton37, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 499, 50, 50));
@@ -451,24 +439,8 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         chequeaBoton((JButton)evt.getSource());
     }//GEN-LAST:event_jButton41MousePressed
 
-    private void BotonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCActionPerformed
-        chequeaBoton((JButton)evt.getSource());
-    }//GEN-LAST:event_BotonCActionPerformed
-
-    private void BotonNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonNActionPerformed
-        chequeaBoton((JButton)evt.getSource());
-    }//GEN-LAST:event_BotonNActionPerformed
-
-    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
-    }//GEN-LAST:event_jButton29ActionPerformed
-
-    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
-    }//GEN-LAST:event_jButton37ActionPerformed
-
     private void BotonA1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonA1MousePressed
-        // TODO add your handling code here:
+        chequeaBoton((JButton)evt.getSource());
     }//GEN-LAST:event_BotonA1MousePressed
 
     /**
