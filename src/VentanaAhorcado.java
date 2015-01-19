@@ -55,7 +55,7 @@ public class VentanaAhorcado extends javax.swing.JFrame {
                     miImagen=ImageIO.read(getClass().getResource("/ahorcado_5.png"));
                     break;
                 case -100:
-                    miImagen=ImageIO.read(getClass().getResource("/acertasteTodas.png"));
+                    miImagen=ImageIO.read(getClass().getResource("/acertasteTodo.png"));
                     break;
                 default:
                     miImagen=ImageIO.read(getClass().getResource("/ahorcado_fin.png"));
@@ -95,7 +95,7 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         
         //para ver si todas las letras estan descubiertas
         if(!palabraConGuiones.contains("_")){
-            numeroFallos=-100;
+            numeroFallos= -100;
         }
         repaint();
     }
